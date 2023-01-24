@@ -1,0 +1,33 @@
+add_filter('frm_filter_where_val', 'filter_custom_display', 8, 2);
+
+function filter_custom_display($where, $args) {
+
+	$user_id_12 = get_current_user_id();
+	
+	$addedpropertiesentries12 = FrmEntry::getAll(array('it.form_id' => 36), ' ORDER BY it.created_at DESC', );
+	
+	$alloftheproperties = [];
+	
+	foreach ($addedpropertiesentries12 as $value12) {
+		$items12 = get_object_vars($value12);
+		$usersid12 = $items12['user_id'];
+		
+		
+		if ($usersid12 == $user_id_12){
+			$entryid12 = $items12['id'];
+			$entry14 = FrmEntryMeta::get_entry_meta_by_field($entryid12, 347);
+			$status14 = FrmEntryMeta::get_entry_meta_by_field($entryid12, 377);
+			
+			
+			if ($status14 == 'Approved'){
+				$approvedaddress14 = $entry14;
+				$alloftheproperties[] = $approvedaddress14;
+				
+				
+				}}}	
+	
+	if ($args['display']->ID == 4340 && $args['where_opt'] == 258 & in_array($args['where_opt'] == 258 , $alloftheproperties)){
+		$where = $args['where_val'];
+	}
+		return $where;			
+	}
