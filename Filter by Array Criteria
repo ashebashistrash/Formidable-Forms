@@ -26,7 +26,7 @@ function filter_custom_display($where, $args) {
 				
 				}}}	
 	
-	if ($args['display']->ID == 4340 && $args['where_opt'] == 258 & in_array($args['where_opt'] == 258 , $alloftheproperties)){
+	if ($args['display']->ID == 4340 && $args['where_opt'] == 258 && in_array($args['where_opt'] == 258 , $alloftheproperties)){
 		$where = $args['where_val'];
 	}
 		return $where;			
